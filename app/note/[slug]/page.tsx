@@ -40,7 +40,9 @@ export default async function NotePage({
       </Link>
 
       <header className="doc-head">
-        <p className="label">되돌린 결정 · {n.period}</p>
+        <p className="label">
+          <span className="kind">되돌린 결정</span> · {n.period}
+        </p>
         <h1 className="doc-q">{n.question}</h1>
         <p className="doc-a">{n.answer}</p>
         <p className="doc-meta mono">{n.tags.join(" · ")}</p>

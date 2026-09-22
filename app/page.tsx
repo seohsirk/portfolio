@@ -5,7 +5,7 @@ import { cases } from "@/content/cases";
 import { notes } from "@/content/notes";
 import { career, education, extras } from "@/content/career";
 
-type Q = { href: string; question: string; answer: string; tag: string };
+type Q = { href: string; question: string; answer: string; tag: string; kind?: boolean };
 
 // 순서 = 가장 강한 것 먼저, 그 다음 시간 역순.
 // 「다시 물었다」를 가장 크게 증명하는 것이 되돌린 결정이라 맨 앞에 둔다.
@@ -15,6 +15,7 @@ const QUESTIONS: Q[] = [
     question: n.question,
     answer: n.answer,
     tag: "되돌린 결정",
+    kind: true,
   })),
   ...cases.map((c) => ({
     href: `/case/${c.slug}`,
@@ -50,7 +51,7 @@ export default function Home() {
                 <span className="q-ask">{q.question}</span>
                 <span className="q-ans">{q.answer}</span>
               </span>
-              <span className="q-tag mono">{q.tag}</span>
+              <span className={`q-tag mono ${q.kind ? "kind" : ""}`}>{q.tag}</span>
             </Link>
           </li>
         ))}

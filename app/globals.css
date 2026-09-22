@@ -372,3 +372,7 @@ body {
   border-radius: 0 4px 4px 0;
   color: var(--ink) !important;
 }
+
+/* 「되돌린 결정」은 케이스와 종류가 다르다 — 라벨로만 말하지 말고 눈에도 보이게 */
+.kind { color: var(--accent); }
+.q-tag.kind { color: var(--accent); }
