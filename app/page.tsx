@@ -57,7 +57,7 @@ export default function Home() {
       </ol>
 
       <section className="home-about">
-        <p className="label">질문을 만난 곳</p>
+        <p className="label">일한 곳</p>
         <ul className="worklist">
           {career.map((j) => (
             <li key={j.company + j.period}>
@@ -73,7 +73,7 @@ export default function Home() {
       </section>
 
       <section className="home-about">
-        <p className="label">쓰는 것</p>
+        <p className="label">쓰는 도구</p>
         <dl className="skilllist">
           {skills.map((g) => (
             <div key={g.label}>
