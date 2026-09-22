@@ -8,7 +8,7 @@ import { career, education, extras } from "@/content/career";
 type Q = { href: string; question: string; answer: string; tag: string; kind?: boolean };
 
 // 순서 = 가장 강한 것 먼저, 그 다음 시간 역순.
-// 「다시 물었다」를 가장 크게 증명하는 것이 되돌린 결정이라 맨 앞에 둔다.
+// 「물어야 했던 것들」을 가장 크게 증명하는 것이 되돌린 결정이라 맨 앞에 둔다.
 const QUESTIONS: Q[] = [
   ...notes.map((n) => ({
     href: `/note/${n.slug}`,
