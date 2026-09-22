@@ -305,3 +305,63 @@ body {
   .q-tag { grid-column: 2; padding-top: .85rem; }
   .worklist li, .skilllist > div { grid-template-columns: minmax(0, 1fr); gap: .3rem; }
 }
+
+/* ── 상세 문서 — 케이스와 기록이 같은 판면을 쓴다 ─────────── */
+.doc { max-width: 48rem; margin: 0 auto; padding: 4rem 2rem 5rem; }
+.back { display: inline-block; font-size: 12px; color: var(--ink-faint); text-decoration: none; }
+.back:hover { color: var(--accent); }
+
+.doc-head { padding: 3.5rem 0 3rem; border-bottom: 1px solid var(--rule); }
+.doc-head .label { display: block; margin-bottom: 1.25rem; }
+.doc-q {
+  font-size: clamp(1.8rem, 3.6vw, 2.75rem);
+  line-height: 1.32;
+  letter-spacing: -0.04em;
+  font-weight: 700;
+  word-break: keep-all;
+}
+.doc-a {
+  margin-top: 1.5rem;
+  font-size: clamp(17px, 1.8vw, 20px);
+  line-height: 1.7;
+  color: var(--ink-muted);
+  word-break: keep-all;
+}
+.doc-a::before { content: "→ "; color: var(--accent); }
+.doc-meta { margin-top: 2rem; font-size: 12px; color: var(--ink-faint); }
+.doc-meta a { color: var(--accent); text-decoration: none; }
+
+.doc-sec { margin-top: 4rem; }
+.doc-sec .label { display: block; margin-bottom: 1.1rem; }
+.doc-h2 { margin-top: 2.5rem; font-size: 1.35rem; line-height: 1.45; font-weight: 600;
+          letter-spacing: -0.03em; word-break: keep-all; }
+.doc-sec .doc-h2:first-child { margin-top: 0; }
+.doc-body { max-width: 40em; }
+.doc-body > p, .doc-body p { font-size: 17px; line-height: 1.85; font-weight: var(--body-weight);
+                             word-break: keep-all; }
+.doc-body > p + p, .doc-body > * + p { margin-top: 1.4rem; }
+
+.aside-note { margin-top: 1.6rem; padding-left: 1.25rem; border-left: 2px solid var(--rule);
+              color: var(--ink-muted); font-size: 16px !important; }
+
+.quote { margin-top: 1.6rem; padding: 1.1rem 1.25rem; border: 1px solid var(--rule);
+         border-radius: 6px; overflow-x: auto; }
+.quote blockquote { font-size: 13px; line-height: 1.7; color: var(--ink-muted); white-space: pre-wrap; }
+.quote figcaption { margin-top: .6rem; font-size: 11px; color: var(--ink-faint); }
+
+.f-note { margin-top: .3rem; font-size: 11px !important; color: var(--ink-faint); line-height: 1.5 !important; }
+
+.lessons { margin-top: 1.75rem; display: grid; gap: 1.5rem; }
+.lessons li { display: grid; grid-template-columns: 2rem minmax(0, 1fr); gap: .75rem; }
+.l-num { font-size: 12px; color: var(--ink-faint); padding-top: .35rem; }
+
+.doc-foot { margin-top: 5rem; padding-top: 2rem; border-top: 1px solid var(--rule);
+            display: flex; justify-content: space-between; gap: 1rem; font-size: 14px; }
+.doc-foot a { text-decoration: none; color: var(--ink-muted); }
+.doc-foot a:last-child { color: var(--accent); }
+.doc-foot a:hover { text-decoration: underline; text-underline-offset: 4px; }
+
+@media (max-width: 720px) {
+  .doc { padding: 3rem 1.5rem 3rem; }
+  .lessons li { grid-template-columns: minmax(0, 1fr); gap: .35rem; }
+}

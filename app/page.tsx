@@ -7,18 +7,20 @@ import { career, education, extras } from "@/content/career";
 
 type Q = { href: string; question: string; answer: string; tag: string };
 
+// 순서 = 가장 강한 것 먼저, 그 다음 시간 역순.
+// 「다시 물었다」를 가장 크게 증명하는 것이 되돌린 결정이라 맨 앞에 둔다.
 const QUESTIONS: Q[] = [
-  ...cases.map((c) => ({
-    href: `/case/${c.slug}`,
-    question: c.question,
-    answer: c.answer,
-    tag: c.name,
-  })),
   ...notes.map((n) => ({
     href: `/note/${n.slug}`,
     question: n.question,
     answer: n.answer,
     tag: "되돌린 결정",
+  })),
+  ...cases.map((c) => ({
+    href: `/case/${c.slug}`,
+    question: c.question,
+    answer: c.answer,
+    tag: c.name,
   })),
 ];
 
