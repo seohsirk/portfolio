@@ -46,14 +46,13 @@ export default function Preview() {
         <div className="scene-inner">
           <p className="label">서한석 · AI Technical Product Manager</p>
           <h1 className="hero-lede">
-            기획서를 쓰고,
-            <br />
-            그걸 직접 만듭니다.
+            <span className="lede-line">게임의 몰입을 재활 훈련으로.</span>
+            <span className="lede-line">데이팅의 매칭을 간호사 채용으로.</span>
+            <span className="lede-line">뉴스의 신호를 영업 기회로.</span>
           </h1>
           <p className="hero-sub">
-            2012년부터 의료기기, 통신 데이터, 채용 플랫폼, B2B SaaS, 생성형 AI
-            제품을 만들었습니다. 기획과 디자인만이 아니라 DB 스키마와 서버,
-            프론트엔드를 직접 씁니다.
+            다른 분야에서 검증된 원리를 옮겨 제품으로 만듭니다. 기획과 디자인만이
+            아니라 DB 스키마와 서버, 프론트엔드를 직접 씁니다.
           </p>
           <div className="hero-meta mono">
             <span>2012 — 2026</span>

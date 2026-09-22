@@ -190,3 +190,8 @@ body {
   .branch { padding: 1.25rem 1rem 1.25rem 1.5rem; }
   .facts dd { font-size: 22px; }
 }
+
+/* 삼단 개조식 — 세 줄이 같은 무게로 쌓이되 마지막이 현재다 */
+.lede-line { display: block; }
+.lede-line + .lede-line { margin-top: .18em; }
+.lede-line:last-child { color: var(--accent); }

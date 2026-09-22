@@ -13,9 +13,11 @@ export default function Home() {
           {profile.name} · {profile.title}
         </p>
         <h1 className="hero-lede mt-6">
-          {profile.lede[0]}
-          <br />
-          {profile.lede[1]}
+          {profile.lede.map((l, i) => (
+            <span key={i} className="lede-line">
+              {l}
+            </span>
+          ))}
         </h1>
       </header>
 
