@@ -206,7 +206,7 @@ body {
 }
 .transfers li {
   display: grid;
-  grid-template-columns: 4.2em 2.6em auto;
+  grid-template-columns: 4.6em 2.6em auto;
   align-items: baseline;
 }
 .t-from { color: var(--ink-muted); }
@@ -216,5 +216,5 @@ body {
 
 @media (max-width: 520px) {
   .transfers { font-size: 18px; }
-  .transfers li { grid-template-columns: 3.8em 2.2em auto; }
+  .transfers li { grid-template-columns: 4.2em 2.2em auto; }
 }

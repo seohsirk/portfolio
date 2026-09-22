@@ -51,10 +51,10 @@ export default function Preview() {
           </h1>
           <ul className="transfers">
             {[
+              ["공간", "화면"],
               ["게임", "재활"],
               ["데이팅", "채용"],
-              ["통신", "보호"],
-              ["뉴스", "영업"],
+              ["블로그", "제안서"],
             ].map(([f, to]) => (
               <li key={f}>
                 <span className="t-from">{f}</span>
