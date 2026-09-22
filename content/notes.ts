@@ -4,8 +4,8 @@ import type { Note } from "./types";
 export const notes: Note[] = [
   {
     slug: "graph-to-postgres",
-    question: "그래프 데이터베이스를 쓰고 있다고 믿었다. 사실인가?",
-    answer: "48시간에 4건. 쓰고 있지 않았다.",
+    question: "지식그래프를 세웠다. 그래프 DB 가 필요하긴 했나?",
+    answer: "그래프여야 하는 질의가 48시간에 4건이었다.",
     title: "우리는 그래프 데이터베이스를 쓰고 있지 않았다",
     subtitle:
       "지식그래프로 타겟 기업을 발굴하려고 Neo4j 를 세웠다가 Postgres 로 되돌린 기록",

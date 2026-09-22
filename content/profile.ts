@@ -7,8 +7,8 @@ export const profile = {
   email: "seohsirk@gmail.com",
   location: "인천광역시",
 
-  // 질문 목록을 여는 한 줄. 설명하지 않고 이름만 붙인다
-  lede: ["내가 마주한 질문들"],
+  // 질문 목록을 여는 한 줄. 네 사례의 공통 패턴을 선언으로 짚는다
+  lede: ["다시 물었다"],
 
   // 한 줄로 요약되는 차별점. 과장 없이.
   standout: [
