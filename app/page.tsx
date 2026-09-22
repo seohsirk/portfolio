@@ -19,6 +19,15 @@ export default function Home() {
             </span>
           ))}
         </h1>
+        <ul className="transfers">
+          {profile.transfers.map((x) => (
+            <li key={x.from}>
+              <span className="t-from">{x.from}</span>
+              <span className="t-arrow mono">→</span>
+              <span className="t-to">{x.to}</span>
+            </li>
+          ))}
+        </ul>
       </header>
 
       <section className="mt-10 space-y-5 text-[17px] leading-[1.8]">

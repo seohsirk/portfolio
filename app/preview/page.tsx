@@ -46,10 +46,23 @@ export default function Preview() {
         <div className="scene-inner">
           <p className="label">서한석 · AI Technical Product Manager</p>
           <h1 className="hero-lede">
-            <span className="lede-line">게임의 몰입을 재활 훈련으로.</span>
-            <span className="lede-line">데이팅의 매칭을 간호사 채용으로.</span>
-            <span className="lede-line">뉴스의 신호를 영업 기회로.</span>
+            <span className="lede-line">다른 분야에서 되는 것을</span>
+            <span className="lede-line">이 분야로 옮깁니다.</span>
           </h1>
+          <ul className="transfers">
+            {[
+              ["게임의 몰입", "재활 훈련"],
+              ["데이팅의 매칭", "간호사 채용"],
+              ["통신망의 패킷", "아동 보호"],
+              ["뉴스의 신호", "영업 기회"],
+            ].map(([f, to]) => (
+              <li key={f}>
+                <span className="t-from">{f}</span>
+                <span className="t-arrow mono">→</span>
+                <span className="t-to">{to}</span>
+              </li>
+            ))}
+          </ul>
           <p className="hero-sub">
             다른 분야에서 검증된 원리를 옮겨 제품으로 만듭니다. 기획과 디자인만이
             아니라 DB 스키마와 서버, 프론트엔드를 직접 씁니다.
