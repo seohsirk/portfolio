@@ -1,8 +1,10 @@
 // 포트폴리오 첫 화면 — 히어로와 현재 만들고 있는 제품을 소개한다
+import Link from "next/link";
 const PRODUCTS = [
   {
     name: "Fitsel",
     href: "https://fitsel.im",
+    case: "/case/fitsel",
     year: "2026",
     desc: "60만 기업의 뉴스에서 영업 신호를 찾고, 그 기업에 맞는 제안서를 만드는 B2B 세일즈 인텔리전스",
   },
@@ -71,6 +73,14 @@ export default function Home() {
               <p className="mt-1.5 text-[15px] leading-relaxed text-[var(--color-ink-soft)]">
                 {p.desc}
               </p>
+              {p.case && (
+                <Link
+                  href={p.case}
+                  className="mt-2 inline-block text-[14px] text-[var(--color-accent)] underline-offset-4 hover:underline"
+                >
+                  어떻게 만들었나 →
+                </Link>
+              )}
             </li>
           ))}
         </ul>
@@ -78,7 +88,7 @@ export default function Home() {
 
       <footer className="mt-16 border-t border-[var(--color-line)] pt-8 text-[15px]">
         <p className="text-[var(--color-ink-soft)]">
-          케이스 스터디는 준비 중입니다.
+          파프리카케어 · 라파엘 케이스는 준비 중입니다.
         </p>
         <p className="mt-4">
           <a
