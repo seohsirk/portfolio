@@ -300,3 +300,5 @@ body {
 .probe-svg .n-off circle { fill: var(--rule); }
 .probe-svg .n-off text { fill: var(--ink-faint); opacity: .45; }
 .probe-cap { font-size: 12px; color: var(--ink-faint); line-height: 1.6; }
+.probe-btn.is-rare { border-style: dashed; }
+.probe-btn.is-rare.is-on { border-style: solid; }
