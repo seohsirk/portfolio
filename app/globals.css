@@ -78,16 +78,17 @@ body {
 /* 장면 — 화면 하나에 하나만 */
 .scene { padding: 7rem 2rem; border-bottom: 1px solid var(--rule); }
 .scene:first-of-type { padding-top: 5rem; }
+.scene:first-of-type .scene-inner { max-width: 62rem; }
 .scene-inner { max-width: 46rem; margin: 0 auto; }
 /* 섹션마다 종이가 미세하게 움직인다 */
 .scene:nth-of-type(even) { background: color-mix(in oklab, var(--paper) 96%, var(--ink) 4%); }
 
 /* 히어로 — 첫 문장이 주인공 */
 .hero-lede {
-  font-size: clamp(2rem, 4.6vw, 3.5rem);
-  line-height: 1.34;
-  letter-spacing: -0.035em;
-  font-weight: 600;
+  font-size: clamp(2.4rem, 6.4vw, 5rem);
+  line-height: 1.18;
+  letter-spacing: -0.045em;
+  font-weight: 700;
   max-width: 100%;
   word-break: keep-all;
   text-wrap: balance;
@@ -198,23 +199,15 @@ body {
 
 /* 전환 목록 — 제목을 증명하는 증거. 제목보다 확실히 작게 */
 .transfers {
-  margin-top: 3rem;
-  display: grid;
-  gap: .55rem;
-  font-size: clamp(19px, 2vw, 23px);
-  letter-spacing: -0.02em;
+  margin-top: 2.5rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: .5rem 1.9rem;
+  font-size: clamp(16px, 1.5vw, 19px);
+  letter-spacing: -0.015em;
 }
-.transfers li {
-  display: grid;
-  grid-template-columns: 4.6em 2.6em auto;
-  align-items: baseline;
-}
-.t-from { color: var(--ink-muted); }
-.t-arrow { color: var(--rule-strong); font-size: .62em; }
-.t-to { color: var(--ink); font-weight: 600; }
-.transfers li:last-child .t-to { color: var(--accent); }
-
-@media (max-width: 520px) {
-  .transfers { font-size: 18px; }
-  .transfers li { grid-template-columns: 4.2em 2.2em auto; }
-}
+.transfers li { display: flex; align-items: baseline; gap: .5rem; white-space: nowrap; }
+.t-from { color: var(--ink-faint); }
+.t-arrow { color: var(--rule-strong); font-size: .78em; }
+.t-to { color: var(--ink-muted); font-weight: 500; }
+.transfers li:last-child .t-to { color: var(--accent); font-weight: 600; }
