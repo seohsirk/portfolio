@@ -1,104 +1,202 @@
-// 포트폴리오 첫 화면 — 히어로와 현재 만들고 있는 제품을 소개한다
+// 첫 화면 — 소개, 케이스, 기록, 경력을 한 장에 세운다
 import Link from "next/link";
-const PRODUCTS = [
-  {
-    name: "Fitsel",
-    href: "https://fitsel.im",
-    case: "/case/fitsel",
-    year: "2026",
-    desc: "60만 기업의 뉴스에서 영업 신호를 찾고, 그 기업에 맞는 제안서를 만드는 B2B 세일즈 인텔리전스",
-  },
-  {
-    name: "Wordly AI",
-    year: "2025",
-    desc: "검색·글 생성·이미지 제작을 하나로 묶은 LangGraph 기반 콘텐츠 제작 Agent",
-  },
-  {
-    name: "Storify",
-    year: "2024",
-    desc: "작성·구독·결제·이메일 캠페인을 연결한 뉴스레터 플랫폼",
-  },
-];
+import { profile, skills } from "@/content/profile";
+import { cases } from "@/content/cases";
+import { notes } from "@/content/notes";
+import { career, education, extras } from "@/content/career";
 
 export default function Home() {
   return (
-    <main className="mx-auto max-w-2xl px-6 py-24 sm:py-32">
+    <main className="mx-auto max-w-2xl px-6 py-20 sm:py-28">
       <header>
         <h1 className="text-3xl font-semibold tracking-tight sm:text-4xl">
-          서한석
+          {profile.name}
         </h1>
-        <p className="mt-2 text-[var(--color-ink-soft)]">
-          AI Technical Product Manager
-        </p>
+        <p className="mt-2 text-[var(--color-ink-soft)]">{profile.title}</p>
       </header>
 
-      <section className="mt-12 space-y-5 text-[17px] leading-[1.75]">
-        <p>
-          2012년에 뇌졸중 환자를 위한 재활 학습 솔루션을 기획하는 일로
-          시작했습니다. 지금은 영업 담당자를 위한 AI 제안서 생성 서비스를 혼자
-          만들고 있습니다.
-        </p>
-        <p className="text-[var(--color-ink-soft)]">
-          그 사이에 통신망에서 유해 콘텐츠를 차단하는 구조, 처방전 기반
-          복약관리 앱, 간호사 채용 플랫폼을 만들었습니다. 분야는 달랐지만 일하는
-          방식은 같았습니다. 사용자의 행동을 관찰해 구조로 바꿉니다. 거기에 맞는
-          기술과 사업 조건을 붙인 뒤 출시해서 지표로 확인합니다.
-        </p>
+      <section className="mt-10 space-y-5 text-[17px] leading-[1.8]">
+        {profile.intro.map((p, i) => (
+          <p key={i} className={i > 0 ? "text-[var(--color-ink-soft)]" : ""}>
+            {p}
+          </p>
+        ))}
       </section>
 
-      <section className="mt-16">
-        <h2 className="text-sm font-medium tracking-wide text-[var(--color-ink-soft)]">
-          지금 만드는 것
-        </h2>
-        <ul className="mt-5 divide-y divide-[var(--color-line)] border-y border-[var(--color-line)]">
-          {PRODUCTS.map((p) => (
-            <li key={p.name} className="py-5">
-              <div className="flex items-baseline gap-3">
-                {p.href ? (
-                  <a
-                    href={p.href}
-                    target="_blank"
-                    rel="noreferrer"
-                    className="font-medium text-[var(--color-accent)] underline-offset-4 hover:underline"
-                  >
-                    {p.name}
-                  </a>
-                ) : (
-                  <span className="font-medium">{p.name}</span>
+      <ul className="mt-8 space-y-2">
+        {profile.standout.map((s) => (
+          <li key={s} className="flex gap-2.5 text-[15px] leading-relaxed">
+            <span className="mt-[9px] h-1 w-1 shrink-0 rounded-full bg-[var(--color-accent)]" />
+            <span>{s}</span>
+          </li>
+        ))}
+      </ul>
+
+      {/* 케이스 */}
+      <Block title="만든 것">
+        <ul className="divide-y divide-[var(--color-line)] border-y border-[var(--color-line)]">
+          {cases.map((c) => (
+            <li key={c.slug}>
+              <Link href={`/case/${c.slug}`} className="group block py-5">
+                <div className="flex items-baseline gap-3">
+                  <span className="font-medium group-hover:text-[var(--color-accent)]">
+                    {c.name}
+                  </span>
+                  <span className="text-sm text-[var(--color-ink-soft)]">
+                    {c.period}
+                  </span>
+                </div>
+                <p className="mt-1.5 text-[15px] leading-relaxed text-[var(--color-ink-soft)]">
+                  {c.headline}
+                </p>
+                <p className="mt-2 text-[13px] text-[var(--color-ink-soft)]">
+                  {c.tags.join(" · ")}
+                </p>
+              </Link>
+            </li>
+          ))}
+        </ul>
+      </Block>
+
+      {/* 기록 */}
+      <Block title="되돌린 결정">
+        <ul className="divide-y divide-[var(--color-line)] border-y border-[var(--color-line)]">
+          {notes.map((n) => (
+            <li key={n.slug}>
+              <Link href={`/note/${n.slug}`} className="group block py-5">
+                <p className="font-medium leading-snug group-hover:text-[var(--color-accent)]">
+                  {n.title}
+                </p>
+                <p className="mt-1.5 text-[15px] leading-relaxed text-[var(--color-ink-soft)]">
+                  {n.subtitle}
+                </p>
+              </Link>
+            </li>
+          ))}
+        </ul>
+      </Block>
+
+      {/* 경력 */}
+      <Block title="경력">
+        <ul className="space-y-8">
+          {career.map((j) => (
+            <li key={j.company + j.period}>
+              <div className="flex flex-wrap items-baseline gap-x-3 gap-y-1">
+                <span className="font-medium">{j.company}</span>
+                {j.aka && (
+                  <span className="text-[13px] text-[var(--color-ink-soft)]">
+                    {j.aka}
+                  </span>
                 )}
                 <span className="text-sm text-[var(--color-ink-soft)]">
-                  {p.year}
+                  {j.period}
                 </span>
               </div>
-              <p className="mt-1.5 text-[15px] leading-relaxed text-[var(--color-ink-soft)]">
-                {p.desc}
+              <p className="mt-0.5 text-[15px] text-[var(--color-ink-soft)]">
+                {j.title}
+                {j.location && ` · ${j.location}`}
               </p>
-              {p.case && (
+              {j.summary && (
+                <p className="mt-2.5 text-[15px] leading-relaxed">{j.summary}</p>
+              )}
+              <ul className="mt-2.5 space-y-1.5">
+                {j.points.map((p) => (
+                  <li
+                    key={p}
+                    className="flex gap-2.5 text-[15px] leading-relaxed text-[var(--color-ink-soft)]"
+                  >
+                    <span className="mt-[9px] h-1 w-1 shrink-0 rounded-full bg-[var(--color-line)]" />
+                    <span>{p}</span>
+                  </li>
+                ))}
+              </ul>
+              {j.caseSlug && (
                 <Link
-                  href={p.case}
-                  className="mt-2 inline-block text-[14px] text-[var(--color-accent)] underline-offset-4 hover:underline"
+                  href={`/case/${j.caseSlug}`}
+                  className="mt-2.5 inline-block text-[14px] text-[var(--color-accent)] underline-offset-4 hover:underline"
                 >
-                  어떻게 만들었나 →
+                  케이스 보기 →
                 </Link>
               )}
             </li>
           ))}
         </ul>
-      </section>
+      </Block>
 
-      <footer className="mt-16 border-t border-[var(--color-line)] pt-8 text-[15px]">
-        <p className="text-[var(--color-ink-soft)]">
-          파프리카케어 · 라파엘 케이스는 준비 중입니다.
-        </p>
-        <p className="mt-4">
-          <a
-            href="mailto:seohsirk@gmail.com"
-            className="text-[var(--color-accent)] underline-offset-4 hover:underline"
-          >
-            seohsirk@gmail.com
-          </a>
+      {/* 기술 */}
+      <Block title="기술">
+        <dl className="space-y-5">
+          {skills.map((g) => (
+            <div key={g.label}>
+              <dt className="text-[13px] text-[var(--color-ink-soft)]">
+                {g.label}
+              </dt>
+              <dd className="mt-1 text-[15px] leading-relaxed">
+                {g.items.join(" · ")}
+              </dd>
+            </div>
+          ))}
+        </dl>
+      </Block>
+
+      {/* 학력·기타 */}
+      <Block title="학력">
+        <ul className="space-y-2.5">
+          {education.map((e) => (
+            <li key={e.school} className="text-[15px]">
+              <span className="font-medium">{e.school}</span>
+              <span className="text-[var(--color-ink-soft)]">
+                {" "}
+                · {e.degree} · {e.period}
+              </span>
+            </li>
+          ))}
+        </ul>
+        <dl className="mt-7 space-y-4">
+          {extras.map((x) => (
+            <div key={x.label}>
+              <dt className="text-[13px] text-[var(--color-ink-soft)]">
+                {x.label}
+              </dt>
+              <dd className="mt-0.5 text-[15px]">{x.value}</dd>
+              {x.note && (
+                <p className="mt-0.5 text-[13px] leading-relaxed text-[var(--color-ink-soft)]">
+                  {x.note}
+                </p>
+              )}
+            </div>
+          ))}
+        </dl>
+      </Block>
+
+      <footer className="mt-16 border-t border-[var(--color-line)] pt-8">
+        <a
+          href={`mailto:${profile.email}`}
+          className="text-[17px] text-[var(--color-accent)] underline-offset-4 hover:underline"
+        >
+          {profile.email}
+        </a>
+        <p className="mt-2 text-[14px] text-[var(--color-ink-soft)]">
+          {profile.location}
         </p>
       </footer>
     </main>
+  );
+}
+
+function Block({
+  title,
+  children,
+}: {
+  title: string;
+  children: React.ReactNode;
+}) {
+  return (
+    <section className="mt-16">
+      <h2 className="text-sm font-medium tracking-wide text-[var(--color-ink-soft)]">
+        {title}
+      </h2>
+      <div className="mt-5">{children}</div>
+    </section>
   );
 }
