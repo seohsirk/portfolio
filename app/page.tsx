@@ -14,7 +14,7 @@ const QUESTIONS: Q[] = [
     href: `/note/${n.slug}`,
     question: n.question,
     answer: n.answer,
-    tag: "되돌린 결정",
+    tag: n.kind,
     kind: true,
   })),
   ...cases.map((c) => ({

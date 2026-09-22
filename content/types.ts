@@ -54,6 +54,7 @@ export type SkillGroup = { label: string; items: string[] };
 // 기술 결정 기록 — 케이스보다 짧고 서사에 가깝다
 export type NoteBlock =
   | { kind: "p"; body: string }
+  | { kind: "list"; items: string[] }
   | { kind: "h"; body: string }
   | { kind: "quote"; body: string; source?: string }
   | { kind: "stats"; items: Fact[] }
@@ -61,6 +62,8 @@ export type NoteBlock =
 
 export type Note = {
   slug: string;
+  /** 첫 화면 태그이자 상세 헤더 라벨. 되돌린 결정 · 제품 판단 … */
+  kind: string;
   question: string;
   answer: string;
   title: string;

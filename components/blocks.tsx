@@ -78,6 +78,14 @@ export function NoteBlockView({ block }: { block: NoteBlock }) {
   switch (block.kind) {
     case "p":
       return <p>{block.body}</p>;
+    case "list":
+      return (
+        <ul className="spec">
+          {block.items.map((it) => (
+            <li key={it}>{it}</li>
+          ))}
+        </ul>
+      );
     case "h":
       return (
         <h2 className="doc-h2">{block.body}</h2>

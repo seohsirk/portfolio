@@ -41,7 +41,7 @@ export default async function NotePage({
 
       <header className="doc-head">
         <p className="label">
-          <span className="kind">되돌린 결정</span> · {n.period}
+          <span className="kind">{n.kind}</span> · {n.period}
         </p>
         <h1 className="doc-q">{n.question}</h1>
         <p className="doc-a">{n.answer}</p>
