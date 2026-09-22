@@ -1,4 +1,5 @@
 // 되돌린 결정 — 케이스와 같은 꼴로 질문부터 연다
+import { Fragment } from "react";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { notes } from "@/content/notes";
@@ -47,13 +48,13 @@ export default async function NotePage({
 
       <article className="doc-body doc-sec">
         {n.body.map((b, i) => (
-          <div key={i}>
+          <Fragment key={i}>
             <NoteBlockView block={b} />
             {/* 「48시간에 4건」을 글로 주장하는 대신 눌러 보게 한다 */}
             {b.kind === "h" && b.body.includes("실제 쿼리를 세어봤다") && (
               <GraphProbe />
             )}
-          </div>
+          </Fragment>
         ))}
       </article>
 

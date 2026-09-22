@@ -187,9 +187,20 @@ body {
           letter-spacing: -0.03em; word-break: keep-all; }
 .doc-sec .doc-h2:first-child { margin-top: 0; }
 .doc-body { max-width: 40em; }
-.doc-body > p, .doc-body p { font-size: 17px; line-height: 1.85; font-weight: var(--body-weight);
-                             word-break: keep-all; }
-.doc-body > p + p, .doc-body > * + p { margin-top: 1.4rem; }
+.doc-body p { font-size: 17px; line-height: 1.85; font-weight: var(--body-weight);
+              word-break: keep-all; }
+
+/* ⭐ 블록 리듬 — 자리마다 간격이 다르다. 이게 없으면 전부 붙어 보인다 */
+.doc-body > * + * { margin-top: 1.5rem; }
+.doc-body > * + .doc-h2 { margin-top: 3.5rem; }      /* 소제목 앞은 크게 띄운다 */
+.doc-body > * + .facts { margin-top: 3rem; }         /* 수치 앞뒤로 숨을 준다 */
+.doc-body > .facts + * { margin-top: 3rem; }
+.doc-body > * + .rail { margin-top: 2.5rem; }
+.doc-body > .rail + * { margin-top: 2.5rem; }
+.doc-body > * + .spec { margin-top: 1.75rem; }
+.doc-body > * + .lessons { margin-top: 2rem; }
+.doc-body > * + .probe { margin-top: 2.5rem; }
+.doc-body > .probe + * { margin-top: 2.5rem; }
 
 .aside-note { margin-top: 1.6rem; padding-left: 1.25rem; border-left: 2px solid var(--rule);
               color: var(--ink-muted); font-size: 16px !important; }
@@ -302,3 +313,62 @@ body {
 .probe-cap { font-size: 12px; color: var(--ink-faint); line-height: 1.6; }
 .probe-btn.is-rare { border-style: dashed; }
 .probe-btn.is-rare.is-on { border-style: solid; }
+
+/* ── 수치 — 모노가 사는 자리 ─────────────────────────── */
+.facts {
+  display: grid;
+  gap: 1.75rem 2.5rem;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  padding: 1.75rem 0;
+  border-top: 1px solid var(--rule);
+  border-bottom: 1px solid var(--rule);
+}
+.facts dt {
+  font-family: var(--mono); font-size: 11px; letter-spacing: .1em;
+  text-transform: uppercase; color: var(--ink-faint);
+}
+.facts dd {
+  margin-top: .45rem; font-family: var(--mono);
+  font-size: 24px; letter-spacing: -0.02em; line-height: 1.2; color: var(--ink);
+}
+
+/* ── 결정 레일 — 기각은 끊기고 채택만 이어진다 ─────────── */
+.rail { display: grid; gap: 1.25rem; }
+.branch {
+  position: relative;
+  padding: 1.6rem 1.75rem 1.6rem 2rem;
+  border-left: 2px solid var(--rule);
+}
+.branch::before {                       /* 분기 가로선 */
+  content: ""; position: absolute; left: 0; top: 2.4rem;
+  width: 1.1rem; height: 2px; background: var(--rule);
+}
+.branch.rejected { opacity: .78; }
+.branch.rejected::after {               /* 레일이 여기서 멈춘다 */
+  content: ""; position: absolute; left: -2px; bottom: 0;
+  width: 13px; height: 2px; background: var(--rule);
+}
+.branch.chosen {
+  border-left-color: var(--accent);
+  background: var(--paper-chosen);
+  box-shadow: inset 0 0 0 1px var(--rule);
+}
+.branch.chosen::before { background: var(--accent); }
+
+.b-name { font-size: 19px !important; font-weight: 600; line-height: 1.5;
+          letter-spacing: -0.02em; color: var(--ink); }
+.b-body { margin-top: .6rem; font-size: 16px !important; line-height: 1.8;
+          color: var(--ink-muted); }
+.b-verdict {
+  margin-top: 1rem; font-family: var(--mono);
+  font-size: 14px !important; font-weight: 500; color: var(--accent);
+}
+
+/* ── 강조 — 눈에 띄어야 강조다 ───────────────────────── */
+.aside-note {
+  padding: 1.1rem 1.25rem;
+  border-left: 3px solid var(--accent);
+  background: color-mix(in oklab, var(--accent) 6%, transparent);
+  border-radius: 0 4px 4px 0;
+  color: var(--ink) !important;
+}
