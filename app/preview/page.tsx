@@ -51,10 +51,10 @@ export default function Preview() {
           </h1>
           <ul className="transfers">
             {[
-              ["게임의 몰입", "재활 훈련"],
-              ["데이팅의 매칭", "간호사 채용"],
-              ["통신망의 패킷", "아동 보호"],
-              ["뉴스의 신호", "영업 기회"],
+              ["게임", "재활"],
+              ["데이팅", "채용"],
+              ["통신", "보호"],
+              ["뉴스", "영업"],
             ].map(([f, to]) => (
               <li key={f}>
                 <span className="t-from">{f}</span>

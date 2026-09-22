@@ -198,18 +198,23 @@ body {
 
 /* 전환 목록 — 제목을 증명하는 증거. 제목보다 확실히 작게 */
 .transfers {
-  margin-top: 2.75rem;
+  margin-top: 3rem;
   display: grid;
-  gap: .7rem;
-  font-size: 15px;
+  gap: .55rem;
+  font-size: clamp(19px, 2vw, 23px);
+  letter-spacing: -0.02em;
 }
-.transfers li { display: grid; grid-template-columns: minmax(0, 8.5em) 1.75rem minmax(0, 1fr);
-                align-items: baseline; }
+.transfers li {
+  display: grid;
+  grid-template-columns: 4.2em 2.6em auto;
+  align-items: baseline;
+}
 .t-from { color: var(--ink-muted); }
-.t-arrow { color: var(--rule-strong); font-size: 13px; }
-.t-to { color: var(--ink); font-weight: 500; }
+.t-arrow { color: var(--rule-strong); font-size: .62em; }
+.t-to { color: var(--ink); font-weight: 600; }
 .transfers li:last-child .t-to { color: var(--accent); }
 
 @media (max-width: 520px) {
-  .transfers li { grid-template-columns: minmax(0, 1fr) 1.5rem minmax(0, 1fr); font-size: 14px; }
+  .transfers { font-size: 18px; }
+  .transfers li { grid-template-columns: 3.8em 2.2em auto; }
 }
