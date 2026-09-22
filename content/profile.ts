@@ -7,8 +7,8 @@ export const profile = {
   email: "seohsirk@gmail.com",
   location: "인천광역시",
 
-  // 질문 목록을 여는 한 줄. 네 사례의 공통 패턴을 선언으로 짚는다
-  lede: ["다시 물었다"],
+  // 질문 목록의 이름. 아래 넷이 「원래 물었어야 할 질문」임을 제목이 말한다
+  lede: ["물어야 했던 것들"],
 
   // 한 줄로 요약되는 차별점. 과장 없이.
   standout: [

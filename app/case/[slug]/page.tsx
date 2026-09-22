@@ -33,7 +33,7 @@ export default async function CasePage({
   return (
     <main className="doc">
       <Link href="/" className="back mono">
-        ← 다시 물었다
+        ← 물어야 했던 것들
       </Link>
 
       <header className="doc-head">
@@ -76,7 +76,7 @@ export function DocFoot() {
   return (
     <footer className="doc-foot">
       <Link href="/" className="mono">
-        ← 다시 물었다
+        ← 물어야 했던 것들
       </Link>
       <a href="mailto:seohsirk@gmail.com">seohsirk@gmail.com</a>
     </footer>

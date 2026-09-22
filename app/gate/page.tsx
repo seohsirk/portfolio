@@ -12,7 +12,7 @@ export default function GatePage() {
     <main className="gate">
       <div className="gate-inner">
         <p className="label">서한석 · AI Technical Product Manager</p>
-        <h1 className="gate-lede">다시 물었다</h1>
+        <h1 className="gate-lede">물어야 했던 것들</h1>
         <p className="gate-desc">
           제품을 만들며 부딪힌 질문 넷을 적어 두었습니다. 비공개라 전달받은
           코드가 필요합니다.
