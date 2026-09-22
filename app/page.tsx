@@ -1,217 +1,111 @@
-// 첫 화면 — 소개, 케이스, 기록, 경력을 한 장에 세운다
+// 첫 화면 — 질문 넷이 사이트의 뼈대다. 설명하지 않고 물어본다
 import Link from "next/link";
 import { profile, skills } from "@/content/profile";
 import { cases } from "@/content/cases";
 import { notes } from "@/content/notes";
 import { career, education, extras } from "@/content/career";
 
+type Q = { href: string; question: string; answer: string; tag: string };
+
+const QUESTIONS: Q[] = [
+  ...cases.map((c) => ({
+    href: `/case/${c.slug}`,
+    question: c.question,
+    answer: c.answer,
+    tag: c.name,
+  })),
+  ...notes.map((n) => ({
+    href: `/note/${n.slug}`,
+    question: n.question,
+    answer: n.answer,
+    tag: "되돌린 결정",
+  })),
+];
+
 export default function Home() {
   return (
-    <main className="mx-auto max-w-2xl px-6 py-20 sm:py-28">
-      <header>
+    <main className="home">
+      <header className="home-head">
         <p className="label">
           {profile.name} · {profile.title}
         </p>
-        <h1 className="hero-lede mt-6">
+        <h1 className="home-lede">
           {profile.lede.map((l, i) => (
             <span key={i} className="lede-line">
               {l}
             </span>
           ))}
         </h1>
-        <ul className="transfers">
-          {profile.transfers.map((x) => (
-            <li key={x.from}>
-              <span className="t-from">{x.from}</span>
-              <span className="t-arrow mono">→</span>
-              <span className="t-to">{x.to}</span>
-            </li>
-          ))}
-        </ul>
       </header>
 
-      <section className="mt-10 space-y-5 text-[17px] leading-[1.8]">
-        {profile.intro.map((p, i) => (
-          <p key={i} className={i > 0 ? "text-[var(--color-ink-soft)]" : ""}>
-            {p}
-          </p>
-        ))}
-      </section>
-
-      <ul className="mt-8 space-y-2">
-        {profile.standout.map((s) => (
-          <li key={s} className="flex gap-2.5 text-[15px] leading-relaxed">
-            <span className="mt-[9px] h-1 w-1 shrink-0 rounded-full bg-[var(--color-accent)]" />
-            <span>{s}</span>
+      {/* 질문 목록 — 이 사이트의 본문 */}
+      <ol className="qlist">
+        {QUESTIONS.map((q, i) => (
+          <li key={q.href}>
+            <Link href={q.href} className="q">
+              <span className="q-num mono">{String(i + 1).padStart(2, "0")}</span>
+              <span className="q-body">
+                <span className="q-ask">{q.question}</span>
+                <span className="q-ans">{q.answer}</span>
+              </span>
+              <span className="q-tag mono">{q.tag}</span>
+            </Link>
           </li>
         ))}
-      </ul>
+      </ol>
 
-      {/* 케이스 */}
-      <Block title="만든 것">
-        <ul className="divide-y divide-[var(--color-line)] border-y border-[var(--color-line)]">
-          {cases.map((c) => (
-            <li key={c.slug}>
-              <Link href={`/case/${c.slug}`} className="group block py-5">
-                <div className="flex items-baseline gap-3">
-                  <span className="font-medium group-hover:text-[var(--color-accent)]">
-                    {c.name}
-                  </span>
-                  <span className="text-sm text-[var(--color-ink-soft)]">
-                    {c.period}
-                  </span>
-                </div>
-                <p className="mt-1.5 text-[15px] leading-relaxed text-[var(--color-ink-soft)]">
-                  {c.headline}
-                </p>
-                <p className="mt-2 text-[13px] text-[var(--color-ink-soft)]">
-                  {c.tags.join(" · ")}
-                </p>
-              </Link>
-            </li>
-          ))}
-        </ul>
-      </Block>
-
-      {/* 기록 */}
-      <Block title="되돌린 결정">
-        <ul className="divide-y divide-[var(--color-line)] border-y border-[var(--color-line)]">
-          {notes.map((n) => (
-            <li key={n.slug}>
-              <Link href={`/note/${n.slug}`} className="group block py-5">
-                <p className="font-medium leading-snug group-hover:text-[var(--color-accent)]">
-                  {n.title}
-                </p>
-                <p className="mt-1.5 text-[15px] leading-relaxed text-[var(--color-ink-soft)]">
-                  {n.subtitle}
-                </p>
-              </Link>
-            </li>
-          ))}
-        </ul>
-      </Block>
-
-      {/* 경력 */}
-      <Block title="경력">
-        <ul className="space-y-8">
+      <section className="home-about">
+        <p className="label">이 질문들을 만난 곳</p>
+        <ul className="worklist">
           {career.map((j) => (
             <li key={j.company + j.period}>
-              <div className="flex flex-wrap items-baseline gap-x-3 gap-y-1">
-                <span className="font-medium">{j.company}</span>
-                {j.aka && (
-                  <span className="text-[13px] text-[var(--color-ink-soft)]">
-                    {j.aka}
-                  </span>
-                )}
-                <span className="text-sm text-[var(--color-ink-soft)]">
-                  {j.period}
-                </span>
-              </div>
-              <p className="mt-0.5 text-[15px] text-[var(--color-ink-soft)]">
-                {j.title}
-                {j.location && ` · ${j.location}`}
-              </p>
-              {j.summary && (
-                <p className="mt-2.5 text-[15px] leading-relaxed">{j.summary}</p>
-              )}
-              <ul className="mt-2.5 space-y-1.5">
-                {j.points.map((p) => (
-                  <li
-                    key={p}
-                    className="flex gap-2.5 text-[15px] leading-relaxed text-[var(--color-ink-soft)]"
-                  >
-                    <span className="mt-[9px] h-1 w-1 shrink-0 rounded-full bg-[var(--color-line)]" />
-                    <span>{p}</span>
-                  </li>
-                ))}
-              </ul>
-              {j.caseSlug && (
-                <Link
-                  href={`/case/${j.caseSlug}`}
-                  className="mt-2.5 inline-block text-[14px] text-[var(--color-accent)] underline-offset-4 hover:underline"
-                >
-                  케이스 보기 →
-                </Link>
-              )}
+              <span className="w-period mono">{j.period}</span>
+              <span className="w-company">
+                {j.company}
+                {j.aka && <em className="w-aka"> {j.aka}</em>}
+              </span>
+              <span className="w-title">{j.title}</span>
             </li>
           ))}
         </ul>
-      </Block>
+      </section>
 
-      {/* 기술 */}
-      <Block title="기술">
-        <dl className="space-y-5">
+      <section className="home-about">
+        <p className="label">쓰는 것</p>
+        <dl className="skilllist">
           {skills.map((g) => (
             <div key={g.label}>
-              <dt className="text-[13px] text-[var(--color-ink-soft)]">
-                {g.label}
-              </dt>
-              <dd className="mt-1 text-[15px] leading-relaxed">
-                {g.items.join(" · ")}
-              </dd>
+              <dt className="mono">{g.label}</dt>
+              <dd>{g.items.join(" · ")}</dd>
             </div>
           ))}
         </dl>
-      </Block>
+      </section>
 
-      {/* 학력·기타 */}
-      <Block title="학력">
-        <ul className="space-y-2.5">
+      <section className="home-about">
+        <p className="label">그 밖에</p>
+        <ul className="worklist">
           {education.map((e) => (
-            <li key={e.school} className="text-[15px]">
-              <span className="font-medium">{e.school}</span>
-              <span className="text-[var(--color-ink-soft)]">
-                {" "}
-                · {e.degree} · {e.period}
-              </span>
+            <li key={e.school}>
+              <span className="w-period mono">{e.period}</span>
+              <span className="w-company">{e.school}</span>
+              <span className="w-title">{e.degree}</span>
+            </li>
+          ))}
+          {extras.map((x) => (
+            <li key={x.label}>
+              <span className="w-period mono">{x.label}</span>
+              <span className="w-company">{x.value}</span>
+              <span className="w-title">{x.note ?? ""}</span>
             </li>
           ))}
         </ul>
-        <dl className="mt-7 space-y-4">
-          {extras.map((x) => (
-            <div key={x.label}>
-              <dt className="text-[13px] text-[var(--color-ink-soft)]">
-                {x.label}
-              </dt>
-              <dd className="mt-0.5 text-[15px]">{x.value}</dd>
-              {x.note && (
-                <p className="mt-0.5 text-[13px] leading-relaxed text-[var(--color-ink-soft)]">
-                  {x.note}
-                </p>
-              )}
-            </div>
-          ))}
-        </dl>
-      </Block>
+      </section>
 
-      <footer className="mt-16 border-t border-[var(--color-line)] pt-8">
-        <a
-          href={`mailto:${profile.email}`}
-          className="text-[17px] text-[var(--color-accent)] underline-offset-4 hover:underline"
-        >
-          {profile.email}
-        </a>
-        <p className="mt-2 text-[14px] text-[var(--color-ink-soft)]">
-          {profile.location}
-        </p>
+      <footer className="home-foot">
+        <a href={`mailto:${profile.email}`}>{profile.email}</a>
+        <span className="mono">{profile.location}</span>
       </footer>
     </main>
-  );
-}
-
-function Block({
-  title,
-  children,
-}: {
-  title: string;
-  children: React.ReactNode;
-}) {
-  return (
-    <section className="mt-16">
-      <h2 className="text-sm font-medium tracking-wide text-[var(--color-ink-soft)]">
-        {title}
-      </h2>
-      <div className="mt-5">{children}</div>
-    </section>
   );
 }

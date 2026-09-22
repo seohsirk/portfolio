@@ -211,3 +211,97 @@ body {
 .t-arrow { color: var(--rule-strong); font-size: .78em; }
 .t-to { color: var(--ink-muted); font-weight: 500; }
 .transfers li:last-child .t-to { color: var(--accent); font-weight: 600; }
+
+/* ── 첫 화면 — 질문이 본문이다 ───────────────────────────── */
+.home { max-width: 54rem; margin: 0 auto; padding: 6rem 2rem 5rem; }
+
+.home-head { padding-bottom: 4rem; }
+.home-lede {
+  margin-top: 1.5rem;
+  font-size: clamp(1.9rem, 4vw, 3rem);
+  line-height: 1.24;
+  letter-spacing: -0.04em;
+  font-weight: 700;
+  word-break: keep-all;
+}
+
+/* 질문 목록 */
+.qlist { border-top: 1px solid var(--rule); }
+.qlist li { border-bottom: 1px solid var(--rule); }
+.q {
+  display: grid;
+  grid-template-columns: 2.5rem minmax(0, 1fr) auto;
+  gap: 0 1.25rem;
+  align-items: start;
+  padding: 2.25rem 0;
+  text-decoration: none;
+  color: inherit;
+  transition: background .15s ease;
+}
+.q:hover { background: var(--paper-chosen); }
+.q-num { font-size: 12px; color: var(--ink-faint); padding-top: .45rem; }
+.q-body { display: block; min-width: 0; }
+.q-ask {
+  display: block;
+  font-size: clamp(19px, 2.1vw, 25px);
+  line-height: 1.48;
+  letter-spacing: -0.028em;
+  font-weight: 600;
+  word-break: keep-all;
+}
+.q:hover .q-ask { color: var(--accent); }
+.q-ans {
+  display: block;
+  margin-top: .65rem;
+  font-size: 16px;
+  line-height: 1.7;
+  color: var(--ink-muted);
+  word-break: keep-all;
+}
+.q-ans::before { content: "→ "; color: var(--accent); }
+.q-tag { font-size: 11px; letter-spacing: .1em; text-transform: uppercase;
+         color: var(--ink-faint); padding-top: .55rem; white-space: nowrap; }
+
+/* 아래 절들 — 전부 같은 표 꼴로 통일해서 리듬을 준다 */
+.home-about { margin-top: 5rem; }
+.home-about .label { display: block; margin-bottom: 1.5rem; }
+
+.worklist li {
+  display: grid;
+  grid-template-columns: 10.5rem minmax(0, 13rem) minmax(0, 1fr);
+  gap: .25rem 1.25rem;
+  padding: .85rem 0;
+  border-bottom: 1px solid var(--rule);
+  font-size: 15px;
+  align-items: baseline;
+}
+.w-period { font-size: 12px; color: var(--ink-faint); }
+.w-company { font-weight: 600; }
+.w-aka { font-style: normal; font-size: 12px; color: var(--ink-faint); }
+.w-title { color: var(--ink-muted); word-break: keep-all; }
+
+.skilllist > div {
+  display: grid;
+  grid-template-columns: 10.5rem minmax(0, 1fr);
+  gap: 1.25rem;
+  padding: .85rem 0;
+  border-bottom: 1px solid var(--rule);
+}
+.skilllist dt { font-size: 12px; letter-spacing: .08em; color: var(--ink-faint); }
+.skilllist dd { font-size: 15px; line-height: 1.7; word-break: keep-all; }
+
+.home-foot {
+  margin-top: 5rem; padding-top: 2rem; border-top: 1px solid var(--rule);
+  display: flex; justify-content: space-between; gap: 1rem; flex-wrap: wrap;
+  font-size: 15px;
+}
+.home-foot a { color: var(--accent); text-decoration: none; }
+.home-foot a:hover { text-decoration: underline; text-underline-offset: 4px; }
+.home-foot .mono { font-size: 12px; color: var(--ink-faint); }
+
+@media (max-width: 720px) {
+  .home { padding: 4rem 1.5rem 3rem; }
+  .q { grid-template-columns: 1.75rem minmax(0, 1fr); }
+  .q-tag { grid-column: 2; padding-top: .85rem; }
+  .worklist li, .skilllist > div { grid-template-columns: minmax(0, 1fr); gap: .3rem; }
+}

@@ -23,6 +23,10 @@ export type CaseSection = {
 export type CaseStudy = {
   slug: string;
   name: string;
+  /** 사이트의 뼈대. 이 제품을 만들며 실제로 부딪힌 질문 */
+  question: string;
+  /** 그 질문에 대한 한 줄 답. 설명이 아니라 판단이어야 한다 */
+  answer: string;
   headline: string;
   role: string;
   period: string;
@@ -55,6 +59,8 @@ export type NoteBlock =
 
 export type Note = {
   slug: string;
+  question: string;
+  answer: string;
   title: string;
   subtitle: string;
   period: string;

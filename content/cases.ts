@@ -5,6 +5,8 @@ export const cases: CaseStudy[] = [
   {
     slug: "fitsel",
     name: "Fitsel",
+    question: "60만 개 기업에 AI 를 어떻게 붙이나?",
+    answer: "검색 문제가 아니라 선별 문제였다.",
     headline: "60만 기업의 뉴스에서 영업 신호를 찾는 비용 문제",
     role: "기획 · 디자인 · 개발 · 운영",
     period: "2026 – 현재",
@@ -130,6 +132,8 @@ export const cases: CaseStudy[] = [
   {
     slug: "papricacare",
     name: "파프리카케어",
+    question: "약을 이해시키는 것과 계속 먹게 하는 것, 뭐가 먼저인가?",
+    answer: "정보를 더 주는 대신 입력을 없앴다.",
     headline: "약을 이해시키는 것과 복약을 이어가게 하는 것은 다른 문제였다",
     role: "CPO · 제품 총괄",
     period: "2019 – 2022 · 어니언스",
@@ -234,6 +238,8 @@ export const cases: CaseStudy[] = [
   {
     slug: "rapael",
     name: "라파엘",
+    question: "반복해야 낫는 훈련을 어떻게 반복하게 하나?",
+    answer: "훈련 바깥이 아니라 훈련 안에 동기를 넣었다.",
     headline: "반복해야 낫는 훈련을 반복하게 만드는 문제",
     role: "서비스기획팀장 · 솔루션 기획",
     period: "2013 – 2016 · 네오펙트",
