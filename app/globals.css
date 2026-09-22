@@ -376,3 +376,10 @@ body {
 /* 「되돌린 결정」은 케이스와 종류가 다르다 — 라벨로만 말하지 말고 눈에도 보이게 */
 .kind { color: var(--accent); }
 .q-tag.kind { color: var(--accent); }
+
+/* 경력 상세 — 회사 칸 아래로 흐르게 둔다 */
+.w-points { grid-column: 2 / -1; margin-top: .6rem; display: grid; gap: .4rem; }
+.w-points li { font-size: 14px; line-height: 1.7; color: var(--ink-faint);
+               word-break: keep-all; padding-left: .8rem; position: relative; }
+.w-points li::before { content: "·"; position: absolute; left: 0; color: var(--rule-strong); }
+@media (max-width: 720px) { .w-points { grid-column: 1; } }

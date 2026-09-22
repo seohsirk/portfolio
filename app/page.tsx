@@ -68,6 +68,13 @@ export default function Home() {
                 {j.aka && <em className="w-aka"> {j.aka}</em>}
               </span>
               <span className="w-title">{j.title}</span>
+              {j.points.length > 0 && (
+                <ul className="w-points">
+                  {j.points.map((pt) => (
+                    <li key={pt}>{pt}</li>
+                  ))}
+                </ul>
+              )}
             </li>
           ))}
         </ul>
