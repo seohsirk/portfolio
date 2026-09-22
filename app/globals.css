@@ -116,7 +116,7 @@ body {
 .home-about { margin-top: 5rem; }
 .home-about .label { display: block; margin-bottom: 1.5rem; }
 
-.worklist li {
+.worklist > li {
   display: grid;
   grid-template-columns: 10.5rem minmax(0, 13rem) minmax(0, 1fr);
   gap: .25rem 1.25rem;
@@ -153,7 +153,7 @@ body {
   .home { padding: 4rem 1.5rem 3rem; }
   .q { grid-template-columns: 1.75rem minmax(0, 1fr); }
   .q-tag { grid-column: 2; padding-top: .85rem; }
-  .worklist li, .skilllist > div { grid-template-columns: minmax(0, 1fr); gap: .3rem; }
+  .worklist > li, .skilllist > div { grid-template-columns: minmax(0, 1fr); gap: .3rem; }
 }
 
 /* ── 상세 문서 — 케이스와 기록이 같은 판면을 쓴다 ─────────── */
@@ -378,8 +378,23 @@ body {
 .q-tag.kind { color: var(--accent); }
 
 /* 경력 상세 — 회사 칸 아래로 흐르게 둔다 */
-.w-points { grid-column: 2 / -1; margin-top: .6rem; display: grid; gap: .4rem; }
-.w-points li { font-size: 14px; line-height: 1.7; color: var(--ink-faint);
-               word-break: keep-all; padding-left: .8rem; position: relative; }
-.w-points li::before { content: "·"; position: absolute; left: 0; color: var(--rule-strong); }
+.w-points {
+  grid-column: 2 / -1;
+  margin-top: .7rem;
+  display: flex;
+  flex-direction: column;
+  gap: .45rem;
+}
+.w-points > li {
+  display: grid;
+  grid-template-columns: .85rem minmax(0, 1fr);
+  gap: .3rem;
+  font-size: 14px;
+  line-height: 1.7;
+  color: var(--ink-faint);
+  word-break: keep-all;
+  border: 0;
+  padding: 0;
+}
+.w-points > li::before { content: "·"; color: var(--rule-strong); }
 @media (max-width: 720px) { .w-points { grid-column: 1; } }
