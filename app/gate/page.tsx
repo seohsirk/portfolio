@@ -9,27 +9,23 @@ export const metadata = {
 
 export default function GatePage() {
   return (
-    <main className="mx-auto flex min-h-dvh max-w-sm flex-col justify-center px-6 py-16">
-      <h1 className="text-2xl font-semibold tracking-tight">서한석</h1>
-      <p className="mt-2 text-[15px] text-[var(--color-ink-soft)]">
-        AI Technical Product Manager
-      </p>
-      <p className="mt-8 text-[15px] leading-relaxed text-[var(--color-ink-soft)]">
-        비공개 포트폴리오입니다. 전달받은 코드를 입력해 주세요.
-      </p>
-      <Suspense>
-        <GateForm />
-      </Suspense>
-      <p className="mt-10 text-[13px] text-[var(--color-ink-soft)]">
-        코드가 없다면{" "}
-        <a
-          href="mailto:seohsirk@gmail.com"
-          className="text-[var(--color-accent)] underline-offset-4 hover:underline"
-        >
-          seohsirk@gmail.com
-        </a>
-        으로 연락 주세요.
-      </p>
+    <main className="gate">
+      <div className="gate-inner">
+        <p className="label">서한석 · AI Technical Product Manager</p>
+        <h1 className="gate-lede">다시 물었다</h1>
+        <p className="gate-desc">
+          제품을 만들며 부딪힌 질문 넷을 적어 두었습니다. 비공개라 전달받은
+          코드가 필요합니다.
+        </p>
+        <Suspense>
+          <GateForm />
+        </Suspense>
+        <p className="gate-help">
+          코드가 없다면{" "}
+          <a href="mailto:seohsirk@gmail.com">seohsirk@gmail.com</a>
+          으로 연락 주세요.
+        </p>
+      </div>
     </main>
   );
 }

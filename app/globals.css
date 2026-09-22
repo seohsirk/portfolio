@@ -62,156 +62,6 @@ body {
 }
 
 
-/* ── 시안 v2 — 스케일을 벌리고 장면을 나눈다 ──────────────── */
-.pv { background: var(--paper); color: var(--ink); }
-.mono { font-family: var(--mono); font-feature-settings: "tnum"; }
-
-/* 아주 작은 라벨 — 스케일의 바닥 */
-.label {
-  font-family: var(--mono);
-  font-size: 11px;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: var(--ink-faint);
-}
-
-/* 장면 — 화면 하나에 하나만 */
-.scene { padding: 7rem 2rem; border-bottom: 1px solid var(--rule); }
-.scene:first-of-type { padding-top: 5rem; }
-.scene:first-of-type .scene-inner { max-width: 62rem; }
-.scene-inner { max-width: 46rem; margin: 0 auto; }
-/* 섹션마다 종이가 미세하게 움직인다 */
-.scene:nth-of-type(even) { background: color-mix(in oklab, var(--paper) 96%, var(--ink) 4%); }
-
-/* 히어로 — 첫 문장이 주인공 */
-.hero-lede {
-  font-size: clamp(2.4rem, 6.4vw, 5rem);
-  line-height: 1.18;
-  letter-spacing: -0.045em;
-  font-weight: 700;
-  max-width: 100%;
-  word-break: keep-all;
-  text-wrap: balance;
-}
-.hero-sub {
-  margin-top: 2.5rem;
-  max-width: 40em;
-  font-size: 17px;
-  line-height: 1.85;
-  color: var(--ink-muted);
-  word-break: keep-all;
-}
-.hero-meta { margin-top: 4rem; display: flex; gap: 2.5rem; flex-wrap: wrap; }
-.hero-meta span { font-size: 12px; }
-
-/* 케이스 제목 — 스케일의 천장 */
-.case-title {
-  margin-top: 1.25rem;
-  font-size: clamp(1.6rem, 2.9vw, 2.25rem);
-  line-height: 1.32;
-  letter-spacing: -0.035em;
-  font-weight: 600;
-  max-width: 16em;
-  word-break: keep-all;
-  text-wrap: balance;
-}
-.case-lede {
-  margin-top: 2rem;
-  max-width: 40em;
-  font-size: 18px;
-  line-height: 1.85;
-  word-break: keep-all;
-}
-
-/* 본문 */
-.prose { max-width: 40em; }
-.prose p { margin-top: 1.5rem; font-size: 17px; line-height: 1.85;
-           font-weight: var(--body-weight); word-break: keep-all; }
-
-/* ⭐ 결정 레일 — 굵고 확실하게 */
-.rail { margin-top: 4rem; }
-.rail-q { font-size: 13px; color: var(--ink-faint); font-family: var(--mono); }
-.branch {
-  position: relative;
-  margin-top: 1.5rem;
-  padding: 1.75rem 2rem 1.75rem 2.25rem;
-  border-left: 2px solid var(--rule);
-}
-.branch::before {                      /* 분기 가로선 */
-  content: ""; position: absolute; left: 0; top: 2.6rem;
-  width: 1.25rem; height: 2px; background: var(--rule);
-}
-.branch.rejected { opacity: .78; }
-.branch.rejected::after {              /* 끊김 — 레일이 여기서 멈춘다 */
-  content: ""; position: absolute; left: -2px; bottom: 0;
-  width: 14px; height: 2px; background: var(--rule);
-}
-.branch.chosen {
-  border-left-color: var(--accent);
-  background: var(--paper-chosen);
-  box-shadow: inset 0 0 0 1px var(--rule);
-}
-.branch.chosen::before { background: var(--accent); }
-
-.b-name { font-size: 20px; font-weight: 600; line-height: 1.5; letter-spacing: -0.02em; }
-.b-body { margin-top: .7rem; font-size: 16px; line-height: 1.8; color: var(--ink-muted);
-          word-break: keep-all; }
-.b-verdict {
-  margin-top: 1.1rem; font-family: var(--mono);
-  font-size: 15px; font-weight: 500; letter-spacing: .01em; color: var(--accent);
-}
-.rejected .b-verdict { color: var(--accent); opacity: .85; }
-
-/* 데이터 — 모노가 사는 곳 */
-.facts { margin-top: 5rem; display: grid; gap: 2.5rem 3rem;
-         grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); max-width: 52em; }
-.facts dt { font-family: var(--mono); font-size: 11px; letter-spacing: .12em;
-            text-transform: uppercase; color: var(--ink-faint); }
-.facts dd { margin-top: .5rem; font-family: var(--mono); font-size: 26px;
-            letter-spacing: -0.02em; }
-
-/* 돌아보면 — 레일이 역방향으로 꺾인다 */
-.reflect { margin-top: 5rem; padding-left: 2.25rem; border-left: 2px solid var(--rule);
-           position: relative; }
-.reflect::before { content: "↰"; position: absolute; left: -.72rem; top: -.35rem;
-                   font-family: var(--mono); font-size: 18px; color: var(--accent);
-                   background: var(--paper); padding: 0 .25rem; }
-.scene:nth-of-type(even) .reflect::before { background: color-mix(in oklab, var(--paper) 96%, var(--ink) 4%); }
-.reflect p { font-size: 17px; line-height: 1.85; color: var(--ink-muted); word-break: keep-all; }
-
-.pv-nav { position: sticky; top: 0; z-index: 10; display: flex; justify-content: space-between;
-          gap: 1rem; padding: 1.1rem 2rem; background: var(--paper);
-          border-bottom: 1px solid var(--rule); font-size: 12px; }
-.pv-nav a { color: var(--ink-muted); text-decoration: none; }
-.pv-nav a:hover { color: var(--accent); }
-.pv-foot { padding: 4rem 2rem; text-align: center; font-size: 11px; color: var(--ink-faint); }
-
-@media (max-width: 720px) {
-  .scene { padding: 6rem 1.5rem; }
-  .branch { padding: 1.25rem 1rem 1.25rem 1.5rem; }
-  .facts dd { font-size: 22px; }
-}
-
-/* 삼단 개조식 — 세 줄이 같은 무게로 쌓이되 마지막이 현재다 */
-.lede-line { display: block; }
-.lede-line + .lede-line { margin-top: .18em; }
-
-
-/* 전환 목록 — 제목을 증명하는 증거. 제목보다 확실히 작게 */
-.transfers {
-  margin-top: 2.5rem;
-  display: flex;
-  flex-wrap: wrap;
-  gap: .5rem 1.9rem;
-  font-size: clamp(16px, 1.5vw, 19px);
-  letter-spacing: -0.015em;
-}
-.transfers li { display: flex; align-items: baseline; gap: .5rem; white-space: nowrap; }
-.t-from { color: var(--ink-faint); }
-.t-arrow { color: var(--rule-strong); font-size: .78em; }
-.t-to { color: var(--ink-muted); font-weight: 500; }
-.transfers li:last-child .t-to { color: var(--accent); font-weight: 600; }
-
 /* ── 첫 화면 — 질문이 본문이다 ───────────────────────────── */
 .home { max-width: 54rem; margin: 0 auto; padding: 6rem 2rem 5rem; }
 
@@ -378,3 +228,75 @@ body {
   word-break: keep-all;
 }
 .spec li::before { content: "·"; color: var(--rule-strong); text-align: center; }
+
+/* ── 게이트 = 히어로. 첫인상은 여기서 시작한다 ──────────── */
+.gate { min-height: 100dvh; display: grid; place-items: center; padding: 2rem; }
+.gate-inner { width: 100%; max-width: 34rem; }
+.gate-lede {
+  margin-top: 1.25rem;
+  font-size: clamp(2.4rem, 7vw, 4rem);
+  line-height: 1.14;
+  letter-spacing: -0.05em;
+  font-weight: 700;
+}
+.gate-desc {
+  margin-top: 1.75rem; max-width: 26em;
+  font-size: 16px; line-height: 1.8; color: var(--ink-muted); word-break: keep-all;
+}
+.gate-form { margin-top: 2.5rem; }
+.gate-row { display: flex; align-items: baseline; gap: 1rem; border-bottom: 1px solid var(--rule-strong);
+            padding-bottom: .6rem; transition: border-color .2s ease; }
+.gate-row:focus-within { border-bottom-color: var(--accent); }
+.gate-input {
+  flex: 1; min-width: 0; background: transparent; border: 0; outline: 0;
+  font-size: 17px; letter-spacing: .08em; color: var(--ink); padding: 0;
+}
+.gate-input::placeholder { color: var(--ink-faint); letter-spacing: 0; }
+.gate-btn {
+  flex: none; background: transparent; border: 0; padding: 0; cursor: pointer;
+  font-size: 15px; font-weight: 600; color: var(--accent); transition: opacity .2s ease;
+}
+.gate-btn:disabled { opacity: .3; cursor: default; }
+.gate-err { margin-top: .75rem; min-height: 1.25rem; font-size: 13px; color: var(--accent); }
+.gate-help { margin-top: 3rem; font-size: 13px; color: var(--ink-faint); }
+.gate-help a { color: var(--ink-muted); text-decoration: underline; text-underline-offset: 3px; }
+.gate-help a:hover { color: var(--accent); }
+
+/* 통과 직후 — 내용이 위에서부터 순서대로 도착한다. 스피너를 쓰지 않는다 */
+@keyframes arrive {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: none; }
+}
+.home > *, .doc > * { animation: arrive .45s cubic-bezier(.22,.61,.36,1) both; }
+.home > *:nth-child(1), .doc > *:nth-child(1) { animation-delay: .02s; }
+.home > *:nth-child(2), .doc > *:nth-child(2) { animation-delay: .1s; }
+.home > *:nth-child(3), .doc > *:nth-child(3) { animation-delay: .18s; }
+.home > *:nth-child(4), .doc > *:nth-child(4) { animation-delay: .26s; }
+.home > *:nth-child(n+5), .doc > *:nth-child(n+5) { animation-delay: .34s; }
+
+@media (prefers-reduced-motion: reduce) {
+  .home > *, .doc > * { animation: none; }
+}
+
+/* 쿼리 프로브 — 이 사이트에서 유일하게 클릭을 요구하는 곳 */
+.probe { margin: 2.25rem 0; }
+.probe-btns { display: flex; flex-wrap: wrap; gap: .5rem; }
+.probe-btn {
+  border: 1px solid var(--rule); background: transparent; color: var(--ink-muted);
+  padding: .45rem .8rem; border-radius: 4px; font-size: 12px; cursor: pointer;
+  transition: all .15s ease;
+}
+.probe-btn:hover { border-color: var(--rule-strong); color: var(--ink); }
+.probe-btn.is-on { border-color: var(--accent); color: var(--accent); }
+
+.probe-svg { display: block; width: 100%; max-width: 30rem; margin: 1.5rem 0 .75rem; }
+.probe-svg line { stroke-width: .35; transition: stroke .25s ease; }
+.probe-svg .e-on { stroke: var(--rule-strong); }
+.probe-svg .e-off { stroke: var(--rule); opacity: .35; }
+.probe-svg circle { transition: fill .25s ease; }
+.probe-svg text { font-family: var(--mono); font-size: 3.1px; transition: fill .25s ease; }
+.probe-svg .n-on circle { fill: var(--accent); }
+.probe-svg .n-on text { fill: var(--ink); }
+.probe-svg .n-off circle { fill: var(--rule); }
+.probe-svg .n-off text { fill: var(--ink-faint); opacity: .45; }
+.probe-cap { font-size: 12px; color: var(--ink-faint); line-height: 1.6; }
