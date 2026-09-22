@@ -9,10 +9,14 @@ export default function Home() {
   return (
     <main className="mx-auto max-w-2xl px-6 py-20 sm:py-28">
       <header>
-        <h1 className="text-3xl font-semibold tracking-tight sm:text-4xl">
-          {profile.name}
+        <p className="label">
+          {profile.name} · {profile.title}
+        </p>
+        <h1 className="hero-lede mt-6">
+          {profile.lede[0]}
+          <br />
+          {profile.lede[1]}
         </h1>
-        <p className="mt-2 text-[var(--color-ink-soft)]">{profile.title}</p>
       </header>
 
       <section className="mt-10 space-y-5 text-[17px] leading-[1.8]">

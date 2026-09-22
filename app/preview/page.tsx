@@ -46,17 +46,18 @@ export default function Preview() {
         <div className="scene-inner">
           <p className="label">서한석 · AI Technical Product Manager</p>
           <h1 className="hero-lede">
-            2012년에 뇌졸중 환자를 위한 재활 학습 솔루션을 기획하는 일로
-            시작했습니다.
+            기획서를 쓰고,
+            <br />
+            그걸 직접 만듭니다.
           </h1>
           <p className="hero-sub">
-            지금은 영업 담당자를 위한 AI 제안서 생성 서비스를 직접 만들고
-            있습니다. 그 사이에 통신망에서 유해 콘텐츠를 차단하는 구조, 처방전
-            기반 복약관리 앱, 간호사 채용 플랫폼을 만들었습니다.
+            2012년부터 의료기기, 통신 데이터, 채용 플랫폼, B2B SaaS, 생성형 AI
+            제품을 만들었습니다. 기획과 디자인만이 아니라 DB 스키마와 서버,
+            프론트엔드를 직접 씁니다.
           </p>
           <div className="hero-meta mono">
             <span>2012 — 2026</span>
-            <span>기획 · 디자인 · DB · 서버 · 프론트엔드</span>
+            <span>7개 제품 · 0 → 1</span>
           </div>
         </div>
       </section>
