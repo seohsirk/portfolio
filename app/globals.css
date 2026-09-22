@@ -365,3 +365,16 @@ body {
   .doc { padding: 3rem 1.5rem 3rem; }
   .lessons li { grid-template-columns: minmax(0, 1fr); gap: .35rem; }
 }
+
+/* 개조식 목록 — 명사형 종결. 마침표를 안 찍는 자리다 */
+.spec { margin-top: 1.25rem; display: grid; gap: .75rem; }
+.spec li {
+  display: grid;
+  grid-template-columns: 1.1rem minmax(0, 1fr);
+  gap: .5rem;
+  font-size: 16px;
+  line-height: 1.7;
+  color: var(--ink-muted);
+  word-break: keep-all;
+}
+.spec li::before { content: "·"; color: var(--rule-strong); text-align: center; }

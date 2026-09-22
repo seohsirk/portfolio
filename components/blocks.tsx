@@ -42,6 +42,17 @@ export function CaseBlock({ block }: { block: Block }) {
           ))}
         </>
       );
+    case "list":
+      return (
+        <>
+          {block.intro && <p>{block.intro}</p>}
+          <ul className="spec">
+            {block.items.map((it) => (
+              <li key={it}>{it}</li>
+            ))}
+          </ul>
+        </>
+      );
     case "options":
       return (
         <>

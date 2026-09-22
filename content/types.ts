@@ -10,6 +10,8 @@ export type Fact = { label: string; value: string; note?: string };
 
 export type Block =
   | { kind: "text"; body: string[] }
+  /** 개조식 목록 — 명사형 종결, 마침표 없음. K30 밖의 자리다 */
+  | { kind: "list"; intro?: string; items: string[] }
   | { kind: "options"; intro?: string; items: Option[] }
   | { kind: "facts"; intro?: string; items: Fact[] }
   | { kind: "note"; body: string };
