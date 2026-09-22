@@ -85,6 +85,8 @@ export const career: Job[] = [
 export const education = [
   { school: "University of the Arts London", degree: "공간디자인 학사", period: "2006.09 – 2010.09" },
   { school: "명지대학교", degree: "경영학 학사", period: "1998.02 – 2006.02" },
+  // 명지대 재학 8년을 설명하는 조각. 영어 근거로는 영국 학사가 이미 더 세다
+  { school: "University of Manitoba", degree: "Academic English 수료 · 캐나다", period: "2004.01 – 2004.11" },
 ];
 
 export const extras = [
@@ -98,5 +100,5 @@ export const extras = [
     value: "4건",
     note: "신체움직임 평가방법 및 어플리케이션 · 복수의 디스플레이부 제어방법 · 발광다이오드 안경 · [디자인] 발광 다이오드가 부설된 안경",
   },
-  { label: "병역", value: "육군 만기전역" },
+  { label: "병역", value: "육군 만기전역", note: "1999.02 – 2001.04" },
 ];
