@@ -57,7 +57,7 @@ export default function Home() {
       </ol>
 
       <section className="home-about">
-        <p className="label">이 질문들을 만난 곳</p>
+        <p className="label">질문을 만난 곳</p>
         <ul className="worklist">
           {career.map((j) => (
             <li key={j.company + j.period}>
